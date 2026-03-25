@@ -25,6 +25,15 @@ Process Thread（消费者）：负责使用 OpenCV 进行图像处理。
 
 优雅退出：捕获 Ctrl+C (SIGINT) 信号，安全释放 V4L2 缓冲区和内存映射。
 
+## 硬件 效果示意
+![990904a9ff53c3c76d7fd8c602c2dbd5](https://github.com/user-attachments/assets/42a063d4-656e-4ae4-bb95-22f507aed78e)
+
+
+<img width="1479" height="759" alt="image" src="https://github.com/user-attachments/assets/af30be06-ce2d-4614-81d1-3973f3e2a9e3" />
+
+<img width="1920" height="1020" alt="aa52232435a47846acd08327fa2db822" src="https://github.com/user-attachments/assets/c88baae4-3a73-4dcb-a91b-55d64e8da0e1" />
+
+
 ## 架构示意图
 ```text
 │ ▼ mmap / DQBUF (Capture Thread - 生产者)
