@@ -35,13 +35,26 @@ Process Thread（消费者）：负责使用 OpenCV 进行图像处理。
 
 
 ## 架构示意图
-```text
+
 │ ▼ mmap / DQBUF (Capture Thread - 生产者)
+
 │ ▼ 写入 std::move(Frame)[ ThreadSafeQueue (容量:4, 满则丢弃队首) ]
+
 │ ▼ 阻塞读取 (Process Thread - 消费者)
+
 │ ├─ YUV -> BGR -> HSV
+
 │ ├─ inRange (颜色过滤)
+
 │ ├─ 形态学去噪
+
 │ ├─ findContours
+
 │ ├─ 计算面积与圆形度过滤
+
 │ └─ 保存图像 (TARGET LOCKED)
+
+
+# 测试
+再光线正常（无逆光，光线够）且无高速无规则乱动的情况下，运行了12905帧，每30帧保存数据并再质心画准心，在保存的图片中准心都画对了
+在逆光或暗情况无法正常检测，高速无规则乱动的情况下无法预测预测其跑出视野后的大概方向
