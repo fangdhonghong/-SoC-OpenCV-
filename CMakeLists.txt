@@ -46,8 +46,12 @@ message(STATUS "    OpenCV include path: ${OpenCV_INCLUDE_DIRS}")
 # 5.指定可执行文件的输出路径
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
-# 6. 生成可执行文件
-add_executable(STworld v4l2_capture.cpp)
+# 6. 生成可执行文件（多源文件结构）
+add_executable(STworld
+    v4l2_capture.cpp
+    capture.cpp
+    decision.cpp
+)
 
 # 7.包含头文件目录
 target_include_directories(STworld PRIVATE ${OpenCV_INCLUDE_DIRS})
